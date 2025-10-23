@@ -1,4 +1,10 @@
-yunohost (12.1.30) stable; urgency=low
+yunohost (12.1.31) stable; urgency=low
+
+  - Revert "diagnosis/mail/blocklists: use spamhaus' own ns to avoid 'open resolver' errors" (bf75e1940)
+
+ -- tituspijean <tituspijean@yunohost.org>  Thu, 23 Oct 2025 02:41:48 +0200
+
+ yunohost (12.1.30) stable; urgency=low
 
   - dns/mail: in DNSmasq conf, route queries about spamhaus to spamhaus's own nameservers to avoid 'open resolver' errors (b45b9d4f4)
   - mail/postfix: remove reject_rbl_client abuseat.org because it's in fact spamshaus.org since a few years (42f0b91bf)
