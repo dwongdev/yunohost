@@ -1,3 +1,10 @@
+yunohost (12.1.32) stable; urgency=low
+
+  - spamhaushell: try another way to address the issue by generating a dnsmasq snippet during regenconf (61d2f9fe8)
+  - dnsmasq: stabilize the resolver pool list shuffling by using a seed computed from the machine id and current month (0858ea37f)
+
+ -- Alexandre Aubin <alex.aubin@mailoo.org>  Thu, 23 Oct 2025 14:28:38 +0200
+
 yunohost (12.1.31) stable; urgency=low
 
   - Revert "diagnosis/mail/blocklists: use spamhaus' own ns to avoid 'open resolver' errors" (bf75e1940)
