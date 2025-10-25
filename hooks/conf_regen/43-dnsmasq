@@ -37,7 +37,7 @@ do_init_regen() {
         cat /etc/machine-id || true
         date +%m%Y
     ) | md5sum)
-    cat plain/resolv.dnsmasq.conf | grep "^nameserver" | shuf --random-source=<(echo $SEED) > /etc/resolv.dnsmasq.conf
+    cat plain/resolv.dnsmasq.conf | grep "^nameserver" | shuf --random-source=<(echo "$SEED") > /etc/resolv.dnsmasq.conf
     chown root /etc/resolv.dnsmasq.conf
     chmod 644 /etc/resolv.dnsmasq.conf
 
@@ -79,7 +79,7 @@ do_pre_regen() {
         cat /etc/machine-id || true
         date +%m%Y
     ) | md5sum)
-    cat plain/resolv.dnsmasq.conf | grep "^nameserver" | shuf --random-source=<(echo $SEED) > "${pending_dir}/etc/resolv.dnsmasq.conf"
+    cat plain/resolv.dnsmasq.conf | grep "^nameserver" | shuf --random-source=<(echo "$SEED") > "${pending_dir}/etc/resolv.dnsmasq.conf"
 
     # retrieve variables
     ipv4=$(curl --max-time 10 -s -4 https://ipv4.yunohost.org 2> /dev/null || true)
@@ -136,8 +136,8 @@ do_pre_regen() {
 # Fun-fact : did you know that AAAA is the name of IPv6 DNS records, but also the sound you make when debugging network and DNS??? #TheMoreYouKnow
 EOF
     for IP in $( (
-        dig +short A $SPAMHAUS_NS @$RESOLVER_FOR_DIG 2> /dev/null || true
-        dig +short AAAA $SPAMHAUS_NS @$RESOLVER_FOR_DIG 2> /dev/null || true
+        dig +short A $SPAMHAUS_NS "@$RESOLVER_FOR_DIG" 2> /dev/null || true
+        dig +short AAAA $SPAMHAUS_NS "@$RESOLVER_FOR_DIG" 2> /dev/null || true
     ) | grep -v '^;' | sort); do
         echo "server=/*.zen.spamhaus.org/$IP" >> "${dnsmasq_dir}/spamhaus"
     done
