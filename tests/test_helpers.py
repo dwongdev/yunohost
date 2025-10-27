@@ -119,5 +119,5 @@ def test_helpers(
     subprocess.check_call(
         [wrapper_file, version, test_file, test_func],
         env=test_env,
-        stderr=subprocess.STDOUT
+        stderr=subprocess.STDOUT,
     )
