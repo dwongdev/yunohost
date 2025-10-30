@@ -192,19 +192,11 @@ class MyMigration(Migration):
         # FIXME: This is from bookworm migration, still required?
         # subprocess.check_call(["chattr", "-i", "/etc/resolv.conf"])
 
-        # Do not restart nginx during the upgrade of nginx-common and nginx-extras ...
-        # c.f. https://manpages.debian.org/bullseye/init-system-helpers/deb-systemd-invoke.1p.en.html
-        # and zcat /usr/share/doc/init-system-helpers/README.policy-rc.d.gz
-        # and the code inside /usr/bin/deb-systemd-invoke to see how it calls /usr/sbin/policy-rc.d ...
-        # and also invoke-rc.d ...
-        policy_rc = Path("/usr/sbin/policy-rc.d")
-        policy_rc.write_text(
-            textwrap.dedent("""\
-            #!/bin/bash
-            [[ "$1" =~ "nginx" ]] && exit 101 || exit 0
-        """)
-        )
-        policy_rc.chmod(755)
+        # Do not restart services during apt upgrade, that we know for sure will be broken before a conf-regen
+        self.prevent_services_restart_during_upgrade([
+            "nginx",
+            "dovecot"
+        ])
 
         # Don't send an email to root about the postgresql migration. It should be handled automatically after.
         # FIXME: This is from bookworm migration, still required?
@@ -566,6 +558,27 @@ you have any. However, the new system also has plenty of customization capabilit
         # Stupid OVH has some repo configured which dont work with next debian and break apt...
         for file in sources_list_d.glob("ovh-*.list"):
             file.unlink()
+
+    def prevent_services_restart_during_upgrade(self, services: list[str]) -> None:
+        # c.f. https://manpages.debian.org/bullseye/init-system-helpers/deb-systemd-invoke.1p.en.html
+        # and zcat /usr/share/doc/init-system-helpers/README.policy-rc.d.gz
+        # and the code inside /usr/bin/deb-systemd-invoke to see how it calls /usr/sbin/policy-rc.d ...
+        # and also invoke-rc.d ...
+
+        shell_test = "true"
+        for service in services:
+            shell_test += f' || [[ "$1" =~ "{service}" ]]'
+
+        policy_rc = Path("/usr/sbin/policy-rc.d")
+        policy_rc.write_text(
+            textwrap.dedent(f"""\
+            #!/usr/bin/env bash
+            if {shell_test}; then
+                exit 101
+            fi
+        """)
+        )
+        policy_rc.chmod(755)
 
     def get_apps_equivs_packages(self):
         command = (
