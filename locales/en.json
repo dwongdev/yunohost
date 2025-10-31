@@ -686,7 +686,7 @@
     "migration_description_0033_rework_permission_infos": "Rework the way app permissions are stored",
     "migration_description_0034_fix_missing_admins_aliases": "Fix missing mail aliases for the admins group",
     "migration_description_0035_fix_apps_nodejs_version": "Fix nodejs versions in app systemd configurations",
-    "migration_description_0036_migrate_to_bookworm": "Upgrade the system to Debian Trixie and YunoHost 13",
+    "migration_description_0036_migrate_to_trixie": "Upgrade the system to Debian Trixie and YunoHost 13",
     "migration_ldap_backup_before_migration": "Creating a backup of LDAP database and apps settings prior to the actual migration.",
     "migration_ldap_can_not_backup_before_migration": "The backup of the system could not be completed before the migration failed. Error: {error}",
     "migration_ldap_migration_failed_trying_to_rollback": "Could not migrate… trying to roll back the system.",
