@@ -890,5 +890,21 @@
     "global_settings_setting_enable_blocklists": "Habilitar les llistes de bloqueig per al trànsit entrant",
     "global_settings_setting_enable_blocklists_help": "Bloquejar els servidors llistats per spamcop.net, spamhaus.org i abuseat.org per evitar el correu brossa. Tanmateix, això pot causar problemes de lliurament per a alguns servidors de correu inofensius que poden ser llistats per aquests tercers, en aquest cas no es rebrà el correu enviat des d'aquests servidors.",
     "global_settings_setting_antispam_name": "Antispam",
-    "global_settings_setting_portal_allow_edit_email_alias_help": "Si està desactivat, han de demanar-ho a l'administració."
+    "global_settings_setting_portal_allow_edit_email_alias_help": "Si està desactivat, han de demanar-ho a l'administració.",
+    "confirm_app_insufficient_ram": "Aquesta aplicació requereix més RAM per instal·lar-se de la que hi ha disponible actualment. Fins i tot si aquesta aplicació pogués executar-se, el seu procés d'instal·lació/actualització requereix una gran quantitat de RAM, de manera que el servidor es podria bloquejar i fallar estrepitosament. Si voleu assumir aquest risc de totes maneres, escriviu '{answers}'",
+    "migration_0036_cleaning_up": "Netejant la memòria cau i els paquets que ja no són útils…",
+    "migration_0036_delayed_api_restart": "L'API de YunoHost es reiniciarà automàticament en 15 segons. És possible que no estigui disponible durant uns segons i, aleshores, haureu de tornar a iniciar la sessió.",
+    "migration_0036_main_upgrade": "Iniciant l'actualització principal…",
+    "migration_0036_modified_files": "Tingueu en compte que els fitxers següents s'han modificat manualment i que és possible que s'hagin sobreescrit després de l'actualització: {manually_modified_files}",
+    "migration_0036_not_bullseye": "La distribució actual de Debian no és Bookworm! Si ja heu executat la migració de Bookworm a Trixie, aquest error és simptomàtic del fet que el procediment de migració no ha estat 100% satisfactori (en cas contrari, YunoHost l'hauria marcat com a completat). Es recomana investigar què ha passat amb l'equip de suport, que necessitarà el registre **complet** de la migració, que es pot trobar a Eines > Registres a l'administrador web.",
+    "migration_0036_not_enough_free_space": "L'espai lliure és força baix a /var/! Hauries de tenir com a mínim 1 GB lliure per executar aquesta migració.",
+    "migration_0036_patch_yunohost_dpkg": "Aplicant un pegat a la base de dades dpkg per solucionar els problemes de conflicte…",
+    "migration_0036_patching_sources_list": "S'està pegat el fitxer sources.lists…",
+    "migration_0036_problematic_apps_warning": "Tingueu en compte que s'han detectat les següents aplicacions instal·lades possiblement problemàtiques. Sembla que no s'han instal·lat des del catàleg d'aplicacions de YunoHost o no estan marcades com a «en funcionament». En conseqüència, no es pot garantir que continuïn funcionant després de l'actualització: {problematic_apps}",
+    "migration_0036_start": "Iniciant la migració a Trixie…",
+    "migration_0036_still_on_bookworm_after_main_upgrade": "Alguna cosa ha anat malament durant l'actualització principal, sembla que el sistema encara està a Debian Bookworm.",
+    "migration_0036_system_not_fully_up_to_date": "El vostre sistema no està completament actualitzat. Si us plau, feu una actualització regular abans d'executar la migració a Trixie.",
+    "migration_0036_yunohost_upgrade": "Iniciant l'actualització del nucli de YunoHost…",
+    "migration_description_0036_migrate_to_trixie": "Actualitzar el sistema a Debian Trixie i YunoHost 13",
+    "migration_0036_general_warning": "Finalment, tingueu en compte que aquesta migració és **una operació delicada**. L'equip de YunoHost ha fet tot el possible per revisar-la i provar-la, però la migració encara podria trencar parts del sistema o de les seves aplicacions.\n\nPer tant, us recomanem que:\n    - **Feu còpies de seguretat** de qualsevol dada o aplicació crítica. Més informació a https://yunohost.org/backup;\n    - **Sigueu pacients** després d'iniciar la migració: depenent de la vostra connexió a Internet i del maquinari, pot trigar fins a una hora a actualitzar-se tot correctament;\n    - **Poseu-vos en contacte amb la comunitat** al fòrum si necessiteu ajuda per resoldre problemes."
 }
