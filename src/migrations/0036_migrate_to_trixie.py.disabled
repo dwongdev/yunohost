@@ -143,6 +143,16 @@ def download_gpg_key(url: str, file: Path) -> None:
     file.write_bytes(dearmored)
 
 
+def package_is_installed(package: str) -> bool:
+    result = subprocess.run(
+        f"dpkg --list | grep '^ii ' | grep -q -w {package}",
+        check=False,
+        shell=True,
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+    )
+    return result.returncode == 0
+
+
 class MyMigration(Migration):
     "Upgrade the system to Debian Trixie and Yunohost 13.x"
 
@@ -202,11 +212,12 @@ class MyMigration(Migration):
         ])
 
         # Don't send an email to root about the postgresql migration. It should be handled automatically after.
-        subprocess.run(
-            ["debconf-set-selections"],
-            input="postgresql-common postgresql-common/obsolete-major seen true".encode("utf-8"),
-            check=True,
-        )
+        if package_is_installed("postgresql-common"):
+            subprocess.run(
+                ["debconf-set-selections"],
+                input="postgresql-common postgresql-common/obsolete-major seen true".encode("utf-8"),
+                check=True,
+            )
 
         #
         # Patch yunohost conflicts
