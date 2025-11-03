@@ -444,22 +444,22 @@ class MyMigration(Migration):
 
         message_jinja = textwrap.dedent("""\
             {%- if migration_recent and not beta -%}
-N.B.: This migration has been tested by the community over the last few months but \
-has only been declared stable recently. If your server hosts critical services and \
-if you are not too confident with debugging possible issues, we recommend you to \
-wait a little bit more while we gather more feedback and polish things up. If on the \
-other hand you are relatively confident with debugging small issues that may arise, \
-you are encouraged to run this migration 😉!
+            N.B.: This migration has been tested by the community over the last few \
+months but has only been declared stable recently. If your server hosts critical \
+services and if you are not too confident with debugging possible issues, we recommend \
+you to wait a little bit more while we gather more feedback and polish things up. \
+If on the other hand you are relatively confident with debugging small issues that \
+may arise, you are encouraged to run this migration 😉!
 
             {% endif -%}
-You can read the full **BETA** release note, remaining known issues and feedback from the \
-community here: <https://forum.yunohost.org/t/40656>. In particular, we encourage \
-you to pay attention to the fact that:
-   - the LDAP integration has been reworked and may cause issue if configurations are not \
-properly regenerated during the upgrade. It is recommended to double-check that you have \
-a way to login **directly as root** in case things go sideway (typically by SSHing from the \
-local network, or through rescue access on a VPS). *Or* at least keep a terminal \
-open on the side, in which you are root (e.g. via `sudo -i`).
+            You can read the full **BETA** release note, remaining known issues and \
+feedback from the community here: <https://forum.yunohost.org/t/40656>. \
+In particular, we encourage you to pay attention to the fact that:
+            - the LDAP integration has been reworked and may cause issue if \
+configurations are not properly regenerated during the upgrade. It is recommended \
+to double-check that you have a way to login **directly as root** in case things go \
+sideway (typically by SSHing from the local network, or through rescue access on a VPS). \
+*Or* at least keep a terminal open on the side, in which you are root (e.g. via `sudo -i`).
 
             {{ migration_0036_general_warning }}
             {%- if problematic_apps %}
