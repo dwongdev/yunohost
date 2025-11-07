@@ -163,6 +163,56 @@ class MyMigration(Migration):
 
         logger.info(m18n.n("migration_0036_start"))
 
+        # Stupid stuff because resolvconf later wants to edit /etc/resolv.conf and will miserably crash if it's immutable
+        subprocess.check_call(["chattr", "-i", Path("/etc/resolv.conf").resolve()])
+
+        # Get requirements of the different venvs from python apps
+        _backup_pip_freeze_for_python_app_venvs()
+
+        # Tell libc6 it's okay to restart system stuff during the upgrade
+        subprocess.run(
+            ["debconf-set-selections"],
+            input="libc6 libraries/restart-without-asking boolean true".encode("utf-8"),
+            check=True,
+        )
+
+        # Don't send an email to root about the postgresql migration. It should be handled automatically after.
+        if package_is_installed("postgresql-common"):
+            subprocess.run(
+                ["debconf-set-selections"],
+                input="postgresql-common postgresql-common/obsolete-major seen true".encode("utf-8"),
+                check=True,
+            )
+
+        # Do not restart services during apt upgrade, that we know for sure will be broken before a conf-regen
+        # FIXME : we should find a ~robust way to auto-delete the policy-rc.d file after the migration went through,
+        # ideally wrapping everything in a context manager somehow
+        self.prevent_services_restart_during_upgrade([
+            "nginx",
+            "dovecot"
+        ])
+
+        # Hold import yunohost packages
+        apps_packages = self.get_apps_equivs_packages()
+        ynh_packages = [
+            "yunohost",
+            "moulinette",
+            "ssowat",
+            "yunohost-admin",
+            "yunohost-portal",
+        ]
+        aptitude_with_progress_bar(" ".join(("hold", *ynh_packages, *apps_packages)))
+
+        #
+        # Patch yunohost conflicts
+        #
+        logger.info(m18n.n("migration_0036_patch_yunohost_dpkg"))
+
+        self.patch_yunohost_dpkg()
+
+        # Patch sources.list
+        logger.info(m18n.n("migration_0036_patching_sources_list"))
+
         # Add new apt .deb signing key
         download_gpg_key(
             "https://repo.yunohost.org/keys/yunohost_trixie.asc",
@@ -177,70 +227,18 @@ class MyMigration(Migration):
             Path("/etc/apt/trusted.gpg.d/extra_php_version.gpg"),
         )
 
-        # Patch sources.list
-        logger.info(m18n.n("migration_0036_patching_sources_list"))
         self.patch_apt_sources_list()
-
-        #
-        # Get requirements of the different venvs from python apps
-        #
-
-        _backup_pip_freeze_for_python_app_venvs()
-
-        #
-        # Run apt update
-        #
-
-        aptitude_with_progress_bar("update")
-
-        # Tell libc6 it's okay to restart system stuff during the upgrade
-        subprocess.run(
-            ["debconf-set-selections"],
-            input="libc6 libraries/restart-without-asking boolean true".encode("utf-8"),
-            check=True,
-        )
-
-        # Stupid stuff because resolvconf later wants to edit /etc/resolv.conf and will miserably crash if it's immutable
-        subprocess.check_call(["chattr", "-i", Path("/etc/resolv.conf").resolve()])
-
-        # Do not restart services during apt upgrade, that we know for sure will be broken before a conf-regen
-        # FIXME : we should find a ~robust way to auto-delete the policy-rc.d file after the migration went through,
-        # ideally wrapping everything in a context manager somehow
-        self.prevent_services_restart_during_upgrade([
-            "nginx",
-            "dovecot"
-        ])
-
-        # Don't send an email to root about the postgresql migration. It should be handled automatically after.
-        if package_is_installed("postgresql-common"):
-            subprocess.run(
-                ["debconf-set-selections"],
-                input="postgresql-common postgresql-common/obsolete-major seen true".encode("utf-8"),
-                check=True,
-            )
-
-        #
-        # Patch yunohost conflicts
-        #
-        logger.info(m18n.n("migration_0036_patch_yunohost_dpkg"))
-
-        self.patch_yunohost_dpkg()
 
         #
         # Main upgrade
         #
         logger.info(m18n.n("migration_0036_main_upgrade"))
 
-        # Hold import yunohost packages
-        apps_packages = self.get_apps_equivs_packages()
-        ynh_packages = [
-            "yunohost",
-            "moulinette",
-            "ssowat",
-            "yunohost-admin",
-            "yunohost-portal",
-        ]
-        aptitude_with_progress_bar(" ".join(("hold", *ynh_packages, *apps_packages)))
+        #
+        # Run apt update
+        #
+
+        aptitude_with_progress_bar("update")
 
         # Specific trick because libluajit changed name **again**
         # And also the t64 apocalypse that makes aptitude derp
