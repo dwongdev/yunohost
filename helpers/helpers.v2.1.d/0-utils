@@ -104,9 +104,9 @@ ynh_local_curl() {
     done
     if [ -n "$POST_data" ]; then
         # Add --data arg and remove the last character, which is an unecessary '&'
-        ynh_local_curl_raw $1 --data "${POST_data::-1}"
+        ynh_local_curl_raw "$1" --data "${POST_data::-1}"
     else
-        ynh_local_curl_raw $1
+        ynh_local_curl_raw "$1"
     fi
 }
 
