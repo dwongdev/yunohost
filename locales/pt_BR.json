@@ -499,7 +499,7 @@
     "global_settings_setting_portal_allow_edit_email_forward": "Permitir que os usuários adicionem, removam e editem o encaminhamento de e-mails",
     "global_settings_setting_portal_allow_edit_email_forward_help": "Se desativado, eles precisam pedir aos administradores que façam isso por eles.",
     "global_settings_setting_portal_allow_edit_email_help": "Se desativado, eles precisam pedir aos administradores que façam isso por eles.",
-    "global_settings_setting_portal_name": "Portal",
+    "global_settings_setting_portal_name": "Portal de usuário",
     "global_settings_setting_postfix_compatibility": "Compatibilidade do Postfix",
     "global_settings_setting_postfix_compatibility_help": "Compatibilidade versus compensação de segurança para o servidor Postfix. Afeta as cifras (e outros aspectos relacionados à segurança)",
     "global_settings_setting_postfix_name": "Postfix (servidor de e-mail SMTP)",
