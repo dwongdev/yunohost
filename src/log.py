@@ -585,11 +585,7 @@ class RedactingFormatter(Formatter):
                 and match.group(2) not in self.data_to_redact
                 and match.group(1) not in ["key", "manifest_key"]
             ):
-                data = match.group(2)
-                self.data_to_redact.append(data)
-                # In some conditions due to the way bash -x logs some 'if' checks,
-                # the string might be split with backslashes, so we need to replace these as well.
-                self.data_to_redact.append("".join("\\" + c for c in data))
+                self.data_to_redact.append(match.group(2))
         except Exception as e:
             logger.warning(
                 "Failed to parse line to try to identify data to redact ... : %s" % e
