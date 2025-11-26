@@ -1745,7 +1745,9 @@ class BackupMethod:
         # Ask confirmation for copying
         if size > MB_ALLOWED_TO_ORGANIZE:
             # Check if we're in an interactive terminal
-            is_interactive = sys.stdout.isatty() if hasattr(sys.stdout, 'isatty') else False
+            is_interactive = (
+                sys.stdout.isatty() if hasattr(sys.stdout, "isatty") else False
+            )
 
             if is_interactive:
                 i = Moulinette.prompt(
@@ -1759,7 +1761,9 @@ class BackupMethod:
                     raise YunohostError("backup_unable_to_organize_files")
             else:
                 # In non-interactive mode, accept automatically with a warning
-                logger.warning(f"Copying {size:.1f} MB without confirmation (non-interactive mode)")
+                logger.warning(
+                    f"Copying {size:.1f} MB without confirmation (non-interactive mode)"
+                )
 
         # Copy unbinded path
         logger.debug(m18n.n("backup_copying_to_organize_the_archive", size=str(size)))
