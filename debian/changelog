@@ -1,3 +1,18 @@
+yunohost (12.1.36) stable; urgency=low
+
+  - bookworm->trixie: fix some issues encountered during migration ([#2227](http://github.com/YunoHost/yunohost/pull/2227))
+  - sse: Improve heartbeat handling and error logging in sse_stream ([#2238](http://github.com/YunoHost/yunohost/pull/2238))
+  - logs: fix redacting mechanism not redacting secrets in some cases because of the way set -x display if comparisons in some cases ([#2234](http://github.com/YunoHost/yunohost/pull/2234))
+  - logs: improve yunopaste to also redact email-like patterns ([#2232](http://github.com/YunoHost/yunohost/pull/2232))
+  - logs/helpers: remove debug logs in some part of configpanel's ynh_app_config_validate to reduce noise, and as an additional layer to prevent from leaking secrets ([#2233](http://github.com/YunoHost/yunohost/pull/2233))
+  - backup: add interactive terminal check for backup confirmation prompt ([#2229](http://github.com/YunoHost/yunohost/pull/2229))
+  - postinstall: improve resilience and logging when no internet connectivity is available during postinstall (14248db34)
+  - i18n: Translations updated for Basque, Catalan, French, Galician, Occitan, Polish, Portuguese (Brazil), Russian
+
+  Thanks to all contributors <3 ! (Alekseï, Eduardo Mozart de Oliveira, Eryk Michalak, Francescc, HgO, José M, Kayou, ljf, orhtej2, ppr, Quentí, xabirequejo)
+
+ -- Alexandre Aubin <alex.aubin@mailoo.org>  Thu, 27 Nov 2025 01:29:22 +0100
+
 yunohost (12.1.35) stable; urgency=low
 
   - i18n/doc: update yunohost.org urls such that they point directly to the new doc on doc.yunohost.org etc (4ca736130)
