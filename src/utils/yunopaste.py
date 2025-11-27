@@ -135,7 +135,8 @@ def anonymize(data: str) -> str:
 
             # For the user part: redact alice@ or any "real-world" user name, but not root/admin/... and stuff that is actually template patterns (__FOOBAR__)
             redact_user_part = not (
-                user_part in {"root", "admin", "admins", "postmaster", "webmaster", "abuse"}
+                user_part
+                in {"root", "admin", "admins", "postmaster", "webmaster", "abuse"}
                 or user_part.startswith("__")
                 or user_part.endswith("__")
             )
