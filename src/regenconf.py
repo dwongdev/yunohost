@@ -73,15 +73,22 @@ def regen_conf(
     """
 
     from .settings import settings_get
-    all_available_conf_regen_categories = hook_list("conf_regen", list_by="name", show_info=False)["hooks"]
+
+    all_available_conf_regen_categories = hook_list(
+        "conf_regen", list_by="name", show_info=False
+    )["hooks"]
 
     if names is None:
         names = []
     elif isinstance(names, list):
-        unknowns = [name for name in names if name not in all_available_conf_regen_categories]
+        unknowns = [
+            name for name in names if name not in all_available_conf_regen_categories
+        ]
         names = [name for name in names if name in all_available_conf_regen_categories]
         if not names:
-            raise YunohostError(f"No regen-conf categories named '{', '.join(unknowns)}'", raw_msg=True)
+            raise YunohostError(
+                f"No regen-conf categories named '{', '.join(unknowns)}'", raw_msg=True
+            )
         else:
             for name in unknowns:
                 logger.warning(f"No regen-conf category named '{name}'")
