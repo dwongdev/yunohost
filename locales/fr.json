@@ -181,7 +181,7 @@
     "restore_not_enough_disk_space": "Espace disponible insuffisant (L'espace libre est de {free_space} octets. Le besoin d'espace nécessaire est de {needed_space} octets. En appliquant une marge de sécurité, la quantité d'espace nécessaire est de {margin} octets)",
     "restore_system_part_failed": "Impossible de restaurer la partie '{part}' du système",
     "backup_couldnt_bind": "Impossible de lier {src} avec {dest}.",
-    "domain_dns_conf_is_just_a_recommendation": "Cette section montre la configuration *recommandée*. Elle ne configure *pas* le DNS pour vous. Il est de votre ressort de configurer votre zone DNS, généralement depuis l'interface web de votre fournisseur de nom de domaine (registrar) conformément à cette recommandation.",
+    "domain_dns_conf_is_just_a_recommendation": "Cette section montre la configuration *recommandée*. Elle ne configure pas le DNS pour vous. Il est de votre ressort de configurer votre zone DNS chez votre fournisseur de nom de domaine (registrar) conformément à cette recommandation.",
     "migrations_loading_migration": "Chargement de la migration {id}…",
     "migrations_migration_has_failed": "La migration {id} a échoué, abandon. Erreur : {exception}",
     "migrations_no_migrations_to_run": "Aucune migration à lancer",
