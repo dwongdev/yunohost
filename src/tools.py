@@ -246,7 +246,6 @@ def tools_postinstall(
             logger.warning(
                 "It looks like DNS resolution is broken on your server, which may impact the postinstall process..."
             )
-            internet_ok = "broken_dns"
     else:
         logger.warning(
             "It looks like internet connectivity is not available, which may or may not be what you're expecting ..."
