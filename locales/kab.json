@@ -71,5 +71,14 @@
     "log_app_install": "Sebded asnas '{}'",
     "log_app_remove": "Kkes asebded n usnas n '{}'",
     "log_app_upgrade": "Sali aswir n usnas n '{}'",
-    "server_reboot": "Aqeddac-a a yalles asekker"
+    "server_reboot": "Aqeddac-a a yalles asekker",
+    "domain_config_cert_summary": "Addad n uselkin",
+    "domain_cert_gen_failed": "Ulamek asarew n uselkin",
+    "domain_config_cert_install": "Sebded aselkin n Let's Encrypt",
+    "domain_config_cert_renew": "Ɛiwed-d aselkin n Let's Encrypt",
+    "log_letsencrypt_cert_renew": "Ɛiwed-d aselkin n Let's Encrypt n '{}'",
+    "domain_config_cert_summary_ok": "Yerbeḥ, aselkin-a yettban-d yelha!",
+    "certmanager_cert_signing_failed": "Ur yessaweḍ ara ad yezmel aselkin-nni amaynut",
+    "log_selfsigned_cert_install": "Sebded aselkin i yettwazemlen i yiman-is ɣef taɣult '{}'",
+    "domain_config_cert_summary_letsencrypt": "Igerrez! Aql-ik·ikem tesseqdaceḍ aselkin ameɣtu n Let's Encrypt!"
 }
