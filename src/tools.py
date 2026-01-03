@@ -1044,13 +1044,13 @@ def _skip_all_migrations() -> None:
     write_to_yaml(MIGRATIONS_STATE_PATH, new_states)  # type: ignore[arg-type]
 
 
-def _tools_migrations_run_after_system_restore(backup_version_str: str) -> None:
+def _tools_migrations_run_after_system_restore(backup_version: str) -> None:
     all_migrations = _get_migrations_list()
 
     current_version = version.parse(ynh_packages_version()["yunohost"]["version"])
-    backup_version = version.parse(backup_version_str)
+    backup_version_v = version.parse(backup_version)
 
-    if backup_version == current_version:
+    if backup_version_v == current_version:
         return
 
     for migration in all_migrations:
@@ -1059,7 +1059,7 @@ def _tools_migrations_run_after_system_restore(backup_version_str: str) -> None:
 
         if (
             migration_version is not None
-            and version.parse(migration_version) > backup_version
+            and version.parse(migration_version) > backup_version_v
             and migration_method is not None
         ):
             try:
