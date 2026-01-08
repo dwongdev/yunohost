@@ -131,5 +131,12 @@
     "updating_apt_cache": "Awway n ileqman n umucceḍ yellan i yikemmusen n unagraw…",
     "diagnosis_description_regenconf": "Tiwilawin n unagraw",
     "diagnosis_description_systemresources": "Tiɣbula n unagraw",
-    "domain_config_auth_consumer_key": "Tasarut n usulu"
+    "domain_config_auth_consumer_key": "Tasarut n usulu",
+    "diagnosis_services_running": "Ameẓlu {service} itteddu!",
+    "diagnosis_basesystem_kernel": "Aqeddac-a isedday iɣes n Linux {kernel_version}",
+    "diagnosis_basesystem_ynh_main_version": "Aqeddac-a isedday YunoHost {main_version} ({repo})",
+    "service_already_started": "Ameẓlu n '{service}' iteddu yakan",
+    "service_started": "Ameẓlu n '{service}' yekker",
+    "diagnosis_domain_expires_in": "{domain} ad ttfat akka {days} n wussan.",
+    "diagnosis_everything_ok": "Kra yellan yettban-d yelha i {category}!"
 }
