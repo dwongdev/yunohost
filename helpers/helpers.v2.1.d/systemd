@@ -41,8 +41,7 @@ ynh_config_add_systemd() {
     template="${template:-systemd.service}"
     # ===========================================
 
-    if [[ -n "$mount" ]]
-    then
+    if [[ -n "$mount" ]]; then
         ynh_config_add --template="$template" --destination="/etc/systemd/system/$mount.mount"
         systemctl enable "$mount" --quiet
     else
