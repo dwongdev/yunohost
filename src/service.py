@@ -463,7 +463,7 @@ def _get_and_format_service_status(service, infos):
     if "StateChangeTimestamp" in raw_status:
         output["last_state_change"] = datetime.utcfromtimestamp(
             raw_status["StateChangeTimestamp"] / 1000000
-        )
+        ) if raw_status["StateChangeTimestamp"] != 0 else "unknown"
 
     # 'test_status' is an optional field to test the status of the service using a custom command
     if "test_status" in infos:
