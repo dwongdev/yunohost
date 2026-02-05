@@ -912,7 +912,7 @@
     "diagnosis_package_security_issue_warning": "Le package système '{package}' est actuellement dans la version '{current_version}', qui est vulnérable à un problème de sécurité modéré : {title}. Il est recommandé de le mettre à niveau vers '{fixed_in_version}'. Plus d'informations : {more_infos_list}",
     "diagnosis_package_security_issue_error": "Le paquet système '{package}' est actuellement dans la version '{current_version}', qui est vulnérable à un problème de sécurité MAJEUR : {title}. Il est recommandé de passer dès que possible à la version '{fixed_in_version}'. Plus d'informations : {more_infos_list}",
     "global_settings_setting_dns_custom_resolvers_enabled": "Utiliser des résolveurs DNS personnalisés",
-    "global_settings_setting_dns_custom_resolvers_enabled_help": "Par défaut, YunoHost utilise une liste de résolveurs fiables situés en Europe. Les utilisateurs avancés peuvent choisir de spécifier des résolveurs personnalisés à la place.",
+    "global_settings_setting_dns_custom_resolvers_enabled_help": "Par défaut, YunoHost utilise une liste de résolveurs fiables situés en Europe. Les administrateurices avancées peuvent choisir de spécifier des résolveurs personnalisés à la place.",
     "global_settings_setting_dns_custom_resolvers_list": "Adresses des résolveurs personnalisés",
     "global_settings_setting_dns_custom_resolvers_list_help": "Une liste d'au moins 2 résolveurs DNS par protocole IP utilisé (IPv4/IPv6). Exemple : 89.234.141.66 45.67.81.23 2a00:5881:8100:1000::3 2a0c:e300::1337"
 }
