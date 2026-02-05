@@ -910,5 +910,9 @@
     "diagnosis_package_security_issue_error": "O pacote de sistema '{package}' está atualmente na versão '{current_version}', que é vulnerável a uma falha de segurança GRAVE: {title}. Recomenda-se atualizar O MAIS RÁPIDO POSSÍVEL para a versão '{fixed_in_version}'. Mais informações: {more_infos_list}",
     "diagnosis_apps_security_issue_warning": "O aplicativo {app} está atualmente na versão '{current_version}', que é vulnerável a um problema de segurança moderado: {title}. Recomenda-se atualizá-lo para a versão '{fixed_in_version}'. Mais informações: {more_infos_list}",
     "diagnosis_apps_security_issue_error": "O aplicativo {app} está atualmente na versão '{current_version}', que é vulnerável a uma falha de segurança GRAVE: {title}. Recomenda-se atualizá-lo O MAIS RÁPIDO POSSÍVEL para a versão '{fixed_in_version}'. Mais informações: {more_infos_list}",
-    "diagnosis_package_security_issue_warning": "O pacote de sistema '{package}' está atualmente na versão '{current_version}', que é vulnerável a um problema de segurança moderado: {title}. Recomenda-se atualizá-lo para a versão '{fixed_in_version}'. Mais informações: {more_infos_list}"
+    "diagnosis_package_security_issue_warning": "O pacote de sistema '{package}' está atualmente na versão '{current_version}', que é vulnerável a um problema de segurança moderado: {title}. Recomenda-se atualizá-lo para a versão '{fixed_in_version}'. Mais informações: {more_infos_list}",
+    "global_settings_setting_dns_custom_resolvers_list_help": "Uma lista de pelo menos 2 servidores DNS por protocolo IP em uso (IPv4/IPv6). Exemplo: 89.234.141.66 45.67.81.23 2a00:5881:8100:1000::3 2a0c:e300::1337",
+    "global_settings_setting_dns_custom_resolvers_enabled": "Usar resolvedores DNS personalizados",
+    "global_settings_setting_dns_custom_resolvers_enabled_help": "Por padrão, o YunoHost usa uma lista de servidores confiáveis localizados na Europa. Usuários avançados podem optar por especificar servidores personalizados.",
+    "global_settings_setting_dns_custom_resolvers_list": "Endereços de resolvedores personalizados"
 }

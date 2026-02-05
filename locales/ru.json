@@ -142,7 +142,7 @@
     "certmanager_hit_rate_limit": "Для этого набора доменов {domain} в последнее время было выпущено слишком много сертификатов. Пожалуйста, повторите попытку позже. См. https://letsencrypt.org/docs/rate-limits/ для получения более подробной информации",
     "certmanager_no_cert_file": "Не удалось прочитать файл сертификата для домена {domain} (файл: {file})",
     "confirm_app_install_warning": "Предупреждение: Это приложение может работать, но пока еще недостаточно интегрировано в YunoHost. Некоторые функции, такие как единая регистрация и резервное копирование/восстановление, могут быть недоступны. Все равно установить? [{answers}] ",
-    "yunohost_not_installed": "YunoHost установлен неправильно. Пожалуйста, запустите 'yunohost tools postinstall'",
+    "yunohost_not_installed": "YunoHost установлен некорректно. Пожалуйста, выполните 'yunohost tools postinstall'",
     "backup_cleaning_failed": "Не удалось очистить временную папку резервного копирования",
     "certmanager_attempt_to_replace_valid_cert": "Вы пытаетесь перезаписать хороший и действительный сертификат для домена {domain}! (Используйте --force для обхода)",
     "backup_create_size_estimation": "Архив будет содержать около {size} данных.",
@@ -910,5 +910,9 @@
     "diagnosis_apps_security_issue_warning": "Приложение {app} в версии '{current_version}' (установленная у вас) имеет проблемы с безопасностью: {title}. Рекомендуется обновить его до версии '{fixed_in_version}'. Подробнее: {more_infos_list}",
     "diagnosis_apps_security_issue_error": "Приложение {app} версии '{current_version}' (установленная у вас) имеет СЕРЬЕЗНЫЕ проблемы с безопасностью: {title}. Рекомендуется КАК МОЖНО СКОРЕЕ обновить его до версии '{fixed_in_version}'. Подробнее: {more_infos_list}",
     "diagnosis_package_security_issue_warning": "Системный пакет '{package}' версии '{current_version}' (сейчас установленная) имеет проблемы с безопасностью: {title}. Рекомендуется обновить его до версии '{fixed_in_version}'. Подробнее: {more_infos_list}",
-    "diagnosis_package_security_issue_error": "Системный пакет '{package}' версии '{current_version}' (сейчас установленная) имеет СЕРЬЕЗНЫЕ проблемы с безопасностью: {title}. Рекомендуется КАК МОЖНО СКОРЕЕ обновить его до версии '{fixed_in_version}'. Подробнее: {more_infos_list}"
+    "diagnosis_package_security_issue_error": "Системный пакет '{package}' версии '{current_version}' (сейчас установленная) имеет СЕРЬЕЗНЫЕ проблемы с безопасностью: {title}. Рекомендуется КАК МОЖНО СКОРЕЕ обновить его до версии '{fixed_in_version}'. Подробнее: {more_infos_list}",
+    "global_settings_setting_dns_custom_resolvers_enabled": "Использ. пользовательские DNS-резолверы",
+    "global_settings_setting_dns_custom_resolvers_enabled_help": "По умолчанию YunoHost использует список надёжных резолверов, расположенных в Европе. Опытные пользователи могут вместо этого указать собственные резолверы.",
+    "global_settings_setting_dns_custom_resolvers_list": "Адреса пользовательских резолверов",
+    "global_settings_setting_dns_custom_resolvers_list_help": "Список из не менее 2 DNS-резолверов для каждого используемого IP-протокола (IPv4/IPv6). Пример: 89.234.141.66 45.67.81.23 2a00:5881:8100:1000::3 2a0c:e300::1337"
 }

@@ -910,5 +910,9 @@
     "diagnosis_apps_security_issue_warning": "L'aplicació {app} es troba actualment a la versió «{current_version}», que és vulnerable a un problema de seguretat moderat: {title}. Es recomana actualitzar-la a «{fixed_in_version}». Més informació: {more_infos_list}",
     "diagnosis_apps_security_issue_error": "L'aplicació {app} es troba actualment a la versió «{current_version}», que és vulnerable a un problema de seguretat IMPORTANT: {title}. Es recomana actualitzar-la COM MÉS AVIAT POSSIBLE a la versió «{fixed_in_version}». Més informació: {more_infos_list}",
     "diagnosis_package_security_issue_warning": "El paquet de sistema «{package}»es troba actualment a la versió «{current_version}», que és vulnerable a un problema de seguretat moderat: {title}. Es recomana actualitzar-lo a «{fixed_in_version}». Més informació: {more_infos_list}",
-    "diagnosis_package_security_issue_error": "El paquet de sistema «{package}» es troba actualment a la versió «{current_version}», que és vulnerable a un problema de seguretat IMPORTANT: {title}. Es recomana actualitzar-lo COM MÉS AVIAT POSSIBLE a la versió «{fixed_in_version}». Més informació: {more_infos_list}"
+    "diagnosis_package_security_issue_error": "El paquet de sistema «{package}» es troba actualment a la versió «{current_version}», que és vulnerable a un problema de seguretat IMPORTANT: {title}. Es recomana actualitzar-lo COM MÉS AVIAT POSSIBLE a la versió «{fixed_in_version}». Més informació: {more_infos_list}",
+    "global_settings_setting_dns_custom_resolvers_enabled": "Utilitza resolutors DNS personalitzats",
+    "global_settings_setting_dns_custom_resolvers_enabled_help": "Per defecte, YunoHost utilitza una llista de resolutors fiables ubicats a Europa. Els usuaris avançats poden voler especificar resolutors personalitzats.",
+    "global_settings_setting_dns_custom_resolvers_list": "Adreces dels resolutors personalitzats",
+    "global_settings_setting_dns_custom_resolvers_list_help": "Una llista d'almenys 2 servidors DNS per protocol IP en ús (IPv4/IPv6). Exemple: 89.234.141.66 45.67.81.23 2a00:5881:8100:1000::3 2a0c:e300::1337"
 }

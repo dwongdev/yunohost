@@ -910,5 +910,9 @@
     "diagnosis_apps_security_issue_warning": "{app} aplikazioaren bertsioa '{current_version}' da, zeinak segurtasun arazo ertain bat baitu: {title}. Gomendagarria da '{fixed_in_version}' bertsiora berritzea. Informazio gehiago: {more_infos_list}",
     "diagnosis_apps_security_issue_error": "{app} aplikazioaren bertsioa '{current_version}' da, zeinak segurtasun arazo LARRI bat baitu: {title}. Gomendagarria da LEHENBAILEHEN '{fixed_in_version}' bertsiora berritzea. Informazio gehiago: {more_infos_list}",
     "diagnosis_package_security_issue_warning": "'{package}' sistemaren paketearen bertsioa '{current_version}' da, zeinak segurtasun arazo ertain bat baitu: {title}. Gomendagarria da '{fixed_in_version}' bertsiora berritzea. Informazio gehiago: {more_infos_list}",
-    "diagnosis_package_security_issue_error": "'{package}' sistemaren paketearen bertsioa '{current_version}' da, zeinak segurtasun arazo LARRI bat baitu: {title}. Gomendagarria da LEHENBAILEHEN '{fixed_in_version}' bertsiora berritzea. Informazio gehiago: {more_infos_list}"
+    "diagnosis_package_security_issue_error": "'{package}' sistemaren paketearen bertsioa '{current_version}' da, zeinak segurtasun arazo LARRI bat baitu: {title}. Gomendagarria da LEHENBAILEHEN '{fixed_in_version}' bertsiora berritzea. Informazio gehiago: {more_infos_list}",
+    "global_settings_setting_dns_custom_resolvers_enabled": "Erabili DNS ebazle (resolver) propioak",
+    "global_settings_setting_dns_custom_resolvers_enabled_help": "Defektuz, YunoHostek Europan kokatutako eta fidagarritzat hartzen diren ebazleen (resolver) zerrenda bat erabiltzen du. Litekeena da erabiltzaile adituek beste ebazle batzuk ezarri nahi izatea.",
+    "global_settings_setting_dns_custom_resolvers_list": "Norberak ezarritako ebazleen helbideak",
+    "global_settings_setting_dns_custom_resolvers_list_help": "Gutxienez 2 DNS ebazleren zerrenda erabiltzen den IP protokoloko (IPv4/IPv6). Adibidea: 89.234.141.66 45.67.81.23 2a00:5881:8100:1000::3 2a0c:e300::1337"
 }
