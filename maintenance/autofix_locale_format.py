@@ -186,8 +186,6 @@ def remove_stale_translated_strings():
             locale_io.write("\n")
 
 
-
-
 autofix_orthotypography_and_standardized_words()
 remove_stale_translated_strings()
 autofix_i18n_placeholders()
