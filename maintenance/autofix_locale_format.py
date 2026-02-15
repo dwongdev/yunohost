@@ -95,12 +95,14 @@ Please fix it manually !
                 )
 
         if fixed_stuff:
-            json.dump(
-                this_locale,
-                open(LOCALE_FOLDER + locale_file, "w"),
-                indent=4,
-                ensure_ascii=False,
-            )
+            with open(LOCALE_FOLDER + locale_file, "w") as locale_io:
+                json.dump(
+                    this_locale,
+                    locale_io,
+                    indent=4,
+                    ensure_ascii=False,
+                )
+                locale_io.write("\n")
 
     for locale_file in TRANSLATION_FILES:
         _autofix_i18n_placeholders(locale_file)
@@ -174,12 +176,16 @@ def remove_stale_translated_strings():
         )
         this_locale_fixed = {k: v for k, v in this_locale.items() if k in reference}
 
-        json.dump(
-            this_locale_fixed,
-            open(LOCALE_FOLDER + locale_file, "w"),
-            indent=4,
-            ensure_ascii=False,
-        )
+        with open(LOCALE_FOLDER + locale_file, "w") as locale_io:
+            json.dump(
+                this_locale_fixed,
+                locale_io,
+                indent=4,
+                ensure_ascii=False,
+            )
+            locale_io.write("\n")
+
+
 
 
 autofix_orthotypography_and_standardized_words()
