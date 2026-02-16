@@ -626,7 +626,7 @@
     "ask_admin_username": "Username dell’utente amministratore",
     "certmanager_cert_renew_failed": "Il rinnovo del certificato Let’s Encrypt è fallito per {domains}",
     "ask_dyndns_recovery_password_explain": "Scegli una password di recupero per il tuo dominio DynDNS, in caso dovessi ripristinarlo successivamente.",
-    "confirm_app_insufficient_ram": "PERICOLO! Quest’app richiede {required} di RAM per essere installata/aggiornata, ma solo {current} sono disponibili ora. Nonostante l’app possa funzionare, la sua installazione o aggiornamento richiedono una grande quantità di RAM, perciò il tuo server potrebbe bloccarsi o fallire miseramente. Se sei dispostə a prenderti questo rischio comunque, digita ‘{answers}’",
+    "confirm_app_insufficient_ram": "Quest’app richiede più RAM di quella attualmente disponibile per l'installazione. Nonostante l’app possa funzionare, la sua installazione o aggiornamento richiedono una grande quantità di RAM, perciò il tuo server potrebbe bloccarsi o fallire miseramente. Se sei dispostə a prenderti questo rischio comunque, digita ‘{answers}’",
     "file_not_exist": "Il file non esiste: '{path}'",
     "unknown_group": "Gruppo '{group}' sconosciuto",
     "unknown_user": "Utente '{user}' sconosciuto",
