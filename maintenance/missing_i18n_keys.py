@@ -92,9 +92,7 @@ def find_expected_string_keys():
         )
 
     # For each migration, expect to find "migration_description_<name>"
-    for path in glob.glob(ROOT + "src/migrations/*.py"):
-        if "__init__" in path:
-            continue
+    for path in glob.glob(ROOT + "src/migrations/0*.py"):
         yield "migration_description_" + os.path.basename(path)[:-3]
 
     # For each default service, expect to find "service_description_<name>"
