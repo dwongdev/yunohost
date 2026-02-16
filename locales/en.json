@@ -596,7 +596,7 @@
     "invalid_password": "Invalid password",
     "invalid_regex": "Invalid regex:'{regex}'",
     "invalid_shell": "Invalid shell: {shell}",
-    "invalid_url": "Failed to connect to {url}... maybe the service is down, or you are not properly connected to the Internet in IPv4/IPv6.",
+    "invalid_url": "Failed to connect to {url}… maybe the service is down, or you are not properly connected to the Internet in IPv4/IPv6.",
     "ldap_attribute_already_exists": "LDAP attribute '{attribute}' already exists with value '{value}'",
     "ldap_server_down": "Unable to reach LDAP server",
     "ldap_server_is_down_restart_it": "The LDAP service is down, attempt to restart it…",
