@@ -141,6 +141,10 @@ def remove_stale_translated_strings(reference: Locale, locale: Locale) -> Locale
     return {k: v for k, v in locale.items() if k in reference}
 
 
+def sort_locale(locale: Locale) -> Locale:
+    return dict(sorted(locale.items()))
+
+
 def main() -> None:
     project_dir: Path = Path(__file__).resolve().parent.parent
     locale_dir = project_dir / "locales"
@@ -162,6 +166,8 @@ def main() -> None:
         )
         if errors:
             fatal_errors.append(file.name)
+
+        # locale = sort_locale(locale)
 
         with file.open("w") as locale_io:
             json.dump(
