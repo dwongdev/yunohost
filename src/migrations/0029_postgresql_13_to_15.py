@@ -23,6 +23,7 @@ from .postgresql import PostgreSQLMigration
 
 class MyMigration(PostgreSQLMigration):
     "Migrate DBs from Postgresql 13 to 15 after migrating to Bookworm"
+
     previous_version = "13"
     target_version = "15"
     debian_version = "bookworm"

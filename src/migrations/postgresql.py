@@ -84,7 +84,9 @@ class PostgreSQLMigration(Migration):
             f"LC_ALL=C pg_dropcluster --stop {self.target_version} main || true"
         )  # We do not trigger an exception if the command fails because that probably means cluster self.target_version doesn't exists, which is fine because it's created during the pg_upgradecluster)
         time.sleep(3)
-        self.runcmd(f"LC_ALL=C pg_upgradecluster -m upgrade {self.previous_version} main -v {self.target_version}")
+        self.runcmd(
+            f"LC_ALL=C pg_upgradecluster -m upgrade {self.previous_version} main -v {self.target_version}"
+        )
         self.runcmd(f"LC_ALL=C pg_dropcluster --stop {self.previous_version} main")
         self.runcmd("systemctl start postgresql")
 
