@@ -26,7 +26,5 @@ class MyMigration(PostgreSQLMigration):
 
     previous_version = "13"
     target_version = "15"
-    debian_version = "bookworm"
-    migration_number = 37
 
     dependencies = ["migrate_to_bookworm"]

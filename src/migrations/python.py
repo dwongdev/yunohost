@@ -55,13 +55,11 @@ class PythonMigration(Migration):
         "weblate",  # weblate settings are .. inside the venv T_T
     ]
 
-    debian_version: str
     migration_id: str
-
     state = None
 
     def venv_requirements_suffix(self) -> str:
-        return f".requirements_backup_for_{self.debian_version}_upgrade.txt"
+        return f".requirements_backup_for_{debian_version()}_upgrade.txt"
 
     def extract_app_from_venv_path(self, venv_path: str) -> str:
         venv_path = venv_path.replace("/var/www/", "")

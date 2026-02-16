@@ -38,8 +38,6 @@ class PostgreSQLMigration(Migration):
     # Provided by calling class
     previous_version: str
     target_version: str
-    debian_version: str
-    migration_number: int
 
     def run(self):
         if (

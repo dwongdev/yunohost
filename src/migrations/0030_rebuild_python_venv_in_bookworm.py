@@ -22,6 +22,5 @@ from .python import PythonMigration
 
 
 class MyMigration(PythonMigration):
-    debian_version = "bookworm"
     dependencies = ["migrate_to_bookworm"]
     migration_id = "0030_rebuild_python_venv_in_bookworm"
