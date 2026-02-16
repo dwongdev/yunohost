@@ -19,11 +19,11 @@
 #
 
 import json
-import sys
-from pathlib import Path
-import textwrap
 import re
+import sys
+import textwrap
 from collections import OrderedDict
+from pathlib import Path
 
 
 def autofix_i18n_placeholders(reference_file: Path, locale_files: list[Path]) -> None:
@@ -154,7 +154,9 @@ def autofix_orthotypography_and_standardized_words(locale_dir: Path) -> None:
     reformat("fr", transformations | transformations_fr)
 
 
-def remove_stale_translated_strings(reference_file: Path, locale_files: list[Path]) -> None:
+def remove_stale_translated_strings(
+    reference_file: Path, locale_files: list[Path]
+) -> None:
     reference = json.load(reference_file.open())
 
     for file in locale_files:
@@ -168,7 +170,6 @@ def remove_stale_translated_strings(reference_file: Path, locale_files: list[Pat
                 ensure_ascii=False,
             )
             locale_io.write("\n")
-
 
 
 def main() -> None:
