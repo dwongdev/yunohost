@@ -25,7 +25,7 @@ import re
 import subprocess
 import sys
 
-import toml
+import tomllib
 import yaml
 
 ROOT = os.path.dirname(__file__) + "/../"
@@ -147,14 +147,14 @@ def find_expected_string_keys():
         yield "backup_applying_method_%s" % method
         yield "backup_method_%s_finished" % method
 
-    registrars = toml.load(open(ROOT + "share/registrar_list.toml"))
+    registrars = tomllib.load(open(ROOT + "share/registrar_list.toml", "rb"))
     supported_registrars = ["ovh", "gandi", "godaddy"]
     for registrar in supported_registrars:
         for key in registrars[registrar].keys():
             yield f"domain_config_{key}"
 
     # Domain config panel
-    domain_config = toml.load(open(ROOT + "share/config_domain.toml"))
+    domain_config = tomllib.load(open(ROOT + "share/config_domain.toml", "rb"))
     domain_settings_with_help_key = [
         "portal_logo",
         "portal_public_intro",
@@ -183,7 +183,7 @@ def find_expected_string_keys():
                     yield f"domain_config_{key}_help"
 
     # App config panel
-    app_config = toml.load(open(ROOT + "share/config_app.toml"))
+    app_config = tomllib.load(open(ROOT + "share/config_app.toml", "rb"))
     app_settings_with_help_key = [
         "logo",
         "description",
@@ -210,7 +210,7 @@ def find_expected_string_keys():
                     yield f"app_config_{key_}_help"
 
     # Global settings
-    global_config = toml.load(open(ROOT + "share/config_global.toml"))
+    global_config = tomllib.load(open(ROOT + "share/config_global.toml", "rb"))
     # Boring hard-coding because there's no simple other way idk
     settings_without_help_key = [
         "passwordless_sudo",
