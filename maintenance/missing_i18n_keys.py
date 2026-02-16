@@ -248,48 +248,53 @@ def find_expected_string_keys():
 #   Compare keys used and keys defined                                        #
 ###############################################################################
 
-if len(sys.argv) <= 1 or sys.argv[1] not in ["--check", "--fix"]:
-    print("Please specify --check or --fix")
-    sys.exit(1)
-
-expected_string_keys = set(find_expected_string_keys())
-keys_defined_for_en = json.loads(open(REFERENCE_FILE).read()).keys()
-keys_defined = set(keys_defined_for_en)
-
-unused_keys = keys_defined.difference(expected_string_keys)
-unused_keys = sorted(unused_keys)
-
-undefined_keys = expected_string_keys.difference(keys_defined)
-undefined_keys = sorted(undefined_keys)
-
-mode = sys.argv[1].strip("-")
-if mode == "check":
-    # Unused keys are not too problematic, will be automatically
-    # removed by the other autoreformat script,
-    # but still informative to display them
-    if unused_keys:
-        print("Those i18n keys appears unused:\n    - " + "\n    - ".join(unused_keys))
-
-    if undefined_keys:
-        print(
-            "Those i18n keys should be defined in en.json:\n"
-            "    - " + "\n    - ".join(undefined_keys)
-        )
+def main() -> None:
+    if len(sys.argv) <= 1 or sys.argv[1] not in ["--check", "--fix"]:
+        print("Please specify --check or --fix")
         sys.exit(1)
 
-elif mode == "fix":
-    j = json.loads(open(REFERENCE_FILE).read())
-    for key in undefined_keys:
-        j[key] = "FIXME"
-    for key in unused_keys:
-        del j[key]
+    expected_string_keys = set(find_expected_string_keys())
+    keys_defined_for_en = json.loads(open(REFERENCE_FILE).read()).keys()
+    keys_defined = set(keys_defined_for_en)
 
-    with open(REFERENCE_FILE, "w") as reference:
-        json.dump(
-            j,
-            reference,
-            indent=4,
-            ensure_ascii=False,
-            sort_keys=True,
-        )
-        reference.write("\n")
+    unused_keys = keys_defined.difference(expected_string_keys)
+    unused_keys = sorted(unused_keys)
+
+    undefined_keys = expected_string_keys.difference(keys_defined)
+    undefined_keys = sorted(undefined_keys)
+
+    mode = sys.argv[1].strip("-")
+    if mode == "check":
+        # Unused keys are not too problematic, will be automatically
+        # removed by the other autoreformat script,
+        # but still informative to display them
+        if unused_keys:
+            print("Those i18n keys appears unused:\n    - " + "\n    - ".join(unused_keys))
+
+        if undefined_keys:
+            print(
+                "Those i18n keys should be defined in en.json:\n"
+                "    - " + "\n    - ".join(undefined_keys)
+            )
+            sys.exit(1)
+
+    elif mode == "fix":
+        j = json.loads(open(REFERENCE_FILE).read())
+        for key in undefined_keys:
+            j[key] = "FIXME"
+        for key in unused_keys:
+            del j[key]
+
+        with open(REFERENCE_FILE, "w") as reference:
+            json.dump(
+                j,
+                reference,
+                indent=4,
+                ensure_ascii=False,
+                sort_keys=True,
+            )
+            reference.write("\n")
+
+
+if __name__ == "__main__":
+    main()
