@@ -25,7 +25,6 @@ import textwrap
 from collections import OrderedDict
 from pathlib import Path
 
-
 Locale = dict[str, str]
 
 
