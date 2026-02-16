@@ -18,26 +18,20 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
-import glob
 import json
-import os
+import sys
+from pathlib import Path
+import textwrap
 import re
 from collections import OrderedDict
 
-ROOT = os.path.dirname(__file__) + "/../"
-LOCALE_FOLDER = ROOT + "/locales/"
 
-# List all locale files (except en.json being the ref)
-TRANSLATION_FILES = glob.glob(LOCALE_FOLDER + "*.json")
-TRANSLATION_FILES = [filename.split("/")[-1] for filename in TRANSLATION_FILES]
-print(LOCALE_FOLDER)
-TRANSLATION_FILES.remove("en.json")
+def autofix_i18n_placeholders(reference_file: Path, locale_files: list[Path]) -> None:
+    reference = json.load(reference_file.open())
 
-REFERENCE_FILE = LOCALE_FOLDER + "en.json"
+    fatal_errors: list[str] = []
 
-
-def autofix_i18n_placeholders():
-    def _autofix_i18n_placeholders(locale_file):
+    def _autofix_i18n_placeholders(locale_file: Path) -> None:
         """
         This tries for magically fix mismatch between en.json format and other.json format
         e.g. an i18n string with:
@@ -45,10 +39,8 @@ def autofix_i18n_placeholders():
             fr:       "Lorem ipsum {une_variable}"
         (ie the keyword in {} was translated but shouldnt have been)
         """
-
-        this_locale = json.loads(open(LOCALE_FOLDER + locale_file).read())
+        this_locale = json.load(locale_file.open())
         fixed_stuff = False
-        reference = json.loads(open(REFERENCE_FILE).read())
 
         # We iterate over all keys/string in en.json
         for key, string in reference.items():
@@ -79,23 +71,18 @@ def autofix_i18n_placeholders():
                 k[0] for k in re.findall(r"{(\w+)(:\w)?}", this_locale[key])
             ]
             if any(k not in subkeys_in_ref for k in subkeys_in_this_locale):
-                raise Exception(
-                    """\n
-==========================
-Format inconsistency for string {key} in {locale_file}:"
-en.json   -> {string}
-{locale_file}   -> {translated_string}
-Please fix it manually !
-    """.format(
-                        key=key,
-                        string=string.encode("utf-8"),
-                        locale_file=locale_file,
-                        translated_string=this_locale[key].encode("utf-8"),
-                    )
-                )
+                errmsg = textwrap.dedent(f"""\
+                    ==========================
+                    Format inconsistency for string {key} in {locale_file}:
+                    {reference_file.name} -> {string.encode("utf-8")}
+                    {locale_file.name} -> {this_locale[key].encode("utf-8")}
+                    Please fix it manually !
+                    """)
+                print(errmsg)
+                fatal_errors.append(locale_file.name)
 
         if fixed_stuff:
-            with open(LOCALE_FOLDER + locale_file, "w") as locale_io:
+            with locale_file.open("w") as locale_io:
                 json.dump(
                     this_locale,
                     locale_io,
@@ -104,17 +91,21 @@ Please fix it manually !
                 )
                 locale_io.write("\n")
 
-    for locale_file in TRANSLATION_FILES:
+    for locale_file in locale_files:
         _autofix_i18n_placeholders(locale_file)
 
+    if fatal_errors:
+        print(f"Errors found in files {', '.join(fatal_errors)}.")
+        sys.exit(1)
 
-def autofix_orthotypography_and_standardized_words():
-    def reformat(lang, transformations):
-        locale = open(f"{LOCALE_FOLDER}{lang}.json").read()
+
+def autofix_orthotypography_and_standardized_words(locale_dir: Path) -> None:
+    def reformat(lang: str, transformations: dict[str, str]) -> None:
+        locale_file = locale_dir / f"{lang}.json"
+        json_raw = locale_file.read_text()
         for pattern, replace in transformations.items():
-            locale = re.compile(pattern).sub(replace, locale)
-
-        open(f"{LOCALE_FOLDER}{lang}.json", "w").write(locale)
+            json_raw = re.compile(pattern).sub(replace, json_raw)
+        locale_file.write_text(json_raw)
 
     ######################################################
 
@@ -135,48 +126,41 @@ def autofix_orthotypography_and_standardized_words():
         # "\u202F",
         "\u3000",
     ]
+    transformations_space = {s: " " for s in godamn_spaces_of_hell}
 
-    transformations = {s: " " for s in godamn_spaces_of_hell}
-    transformations.update(
-        {
-            r"\.\.\.": "…",
-            "https ://": "https://",
-        }
-    )
+    transformations_misc = {
+        r"\.\.\.": "…",
+        "https ://": "https://",
+    }
+
+    transformations = transformations_space | transformations_misc
 
     reformat("en", transformations)
 
     ######################################################
 
-    transformations.update(
-        {
-            "courriel": "email",
-            "e-mail": "email",
-            "Courriel": "Email",
-            "E-mail": "Email",
-            "« ": "'",
-            "«": "'",
-            " »": "'",
-            "»": "'",
-            "’": "'",
-            # r"$(\w{1,2})'|( \w{1,2})'": r"\1\2’",
-        }
-    )
-
-    reformat("fr", transformations)
+    transformations_fr = {
+        "courriel": "email",
+        "e-mail": "email",
+        "Courriel": "Email",
+        "E-mail": "Email",
+        "« ": "'",
+        "«": "'",
+        " »": "'",
+        "»": "'",
+        "’": "'",
+        # r"$(\w{1,2})'|( \w{1,2})'": r"\1\2’",
+    }
+    reformat("fr", transformations | transformations_fr)
 
 
-def remove_stale_translated_strings():
-    reference = json.loads(open(LOCALE_FOLDER + "en.json").read())
+def remove_stale_translated_strings(reference_file: Path, locale_files: list[Path]) -> None:
+    reference = json.load(reference_file.open())
 
-    for locale_file in TRANSLATION_FILES:
-        print(locale_file)
-        this_locale = json.loads(
-            open(LOCALE_FOLDER + locale_file).read(), object_pairs_hook=OrderedDict
-        )
+    for file in locale_files:
+        this_locale = json.load(file.open(), object_pairs_hook=OrderedDict)
         this_locale_fixed = {k: v for k, v in this_locale.items() if k in reference}
-
-        with open(LOCALE_FOLDER + locale_file, "w") as locale_io:
+        with file.open("w") as locale_io:
             json.dump(
                 this_locale_fixed,
                 locale_io,
@@ -188,9 +172,16 @@ def remove_stale_translated_strings():
 
 
 def main() -> None:
-    autofix_orthotypography_and_standardized_words()
-    remove_stale_translated_strings()
-    autofix_i18n_placeholders()
+    project_dir: Path = Path(__file__).resolve().parent.parent
+    locale_dir = project_dir / "locales"
+
+    reference_locale = locale_dir / "en.json"
+    locales = list(locale_dir.glob("*.json"))
+    locales.remove(reference_locale)
+
+    autofix_orthotypography_and_standardized_words(locale_dir)
+    remove_stale_translated_strings(reference_locale, locales)
+    autofix_i18n_placeholders(reference_locale, locales)
 
 
 if __name__ == "__main__":
