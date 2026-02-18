@@ -252,7 +252,7 @@
     "diagnosis_found_errors": "发现与{category}相关的{errors}个重要问题！",
     "diagnosis_found_errors_and_warnings": "发现与{category}相关的{errors}个重要问题（和{warnings}警告）！",
     "diagnosis_found_warnings": "找到{warnings}项，可能需要{category}进行改进。",
-    "diagnosis_high_number_auth_failures": "最近出现了大量可疑的失败身份验证。您的 fail2ban 正在运行且配置正确，或使用自定义端口的 SSH 作为 https://yunohost.org/解释的安全性。",
+    "diagnosis_high_number_auth_failures": "最近出现了大量可疑的失败身份验证。您的 fail2ban 正在运行且配置正确，或使用自定义端口的 SSH 作为 https://doc.yunohost.org/admin/security。",
     "diagnosis_http_bad_status_code": "它看起来像另一台机器（也许是您的互联网路由器）回答，而不是您的服务器。<br>1。这个问题最常见的原因是 80 端口（和 443 端口）<a href='https://doc.yunohost.org/providers/isp_box_config'>没有正确转发到您的服务器</a>。<br>2.在更复杂的设置中：确保没有防火墙或反向代理的干扰。",
     "diagnosis_http_connection_error": "连接错误：无法连接到请求的域，很可能无法访问。",
     "diagnosis_http_could_not_diagnose": "无法诊断域是否可以从 IPv{ipversion}中从外部访问。",
