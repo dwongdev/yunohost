@@ -577,5 +577,6 @@
     "global_settings_setting_postfix_name": "Postfix (serwer poczty SMTP)",
     "global_settings_setting_root_access_explain": "W systemach Linux \"root\" to absolutny administrator. W kontekście YunoHost bezpośrednie logowanie SSH jako \"root\" jest domyślnie wyłączone – z wyjątkiem sieci lokalnej serwera. Członkowie grupy \"admins\" mogą użyć polecenia sudo aby działać jako root z poziomu wiersza poleceń. Posiadanie (solidnego) hasła root może być jednak pomocne w debugowaniu systemu, jeśli z jakiegoś powodu zwykli administratorzy nie mogą się już zalogować.",
     "global_settings_setting_root_access_name": "Zmień hasło root",
-    "global_settings_setting_smtp_backup_mx_domains": "Domeny które będą pełnić funkcję drugorzędnych MX dla"
+    "global_settings_setting_smtp_backup_mx_domains": "Domeny które będą pełnić funkcję drugorzędnych MX dla",
+    "global_settings_setting_smtp_backup_mx_domains_help": "Zezwól temu serwerowi na działanie jako zapasowa *dodatkowa* domena MX dla wymienionej domeny. Oznacza to, że jeśli główna domena MX dla danej domeny będzie niedostępna (na przykład z powodu awarii), wiadomości e-mail będą nadal wysyłane na ten serwer, który będzie je przechowywał przez maksymalnie 20 dni i spróbuje przekazać do właściwego miejsca docelowego po ponownym uruchomieniu. Można podać kilka domen, rozdzielając je przecinkami."
 }
