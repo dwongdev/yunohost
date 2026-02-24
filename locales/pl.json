@@ -617,5 +617,19 @@
     "group_user_already_in_group": "Użytkownik {user} jest już w grupie {group}",
     "group_user_not_in_group": "Użytkownik {user} nie należy do grupy {group}",
     "group_user_remove": "Użytkownik '{user}' zostanie usunięty z grupy '{group}'",
-    "hook_exec_failed": "Nie można uruchomić skryptu: {path}"
+    "hook_exec_failed": "Nie można uruchomić skryptu: {path}",
+    "hook_exec_not_terminated": "Skrypt nie zakończył się prawidłowo: {path}",
+    "hook_json_return_error": "Nie udało się odczytać skryptu powracającego z {path}. Błąd: {msg}. Surowa zawartość: {raw_content}",
+    "hook_list_by_invalid": "Tej właściwości nie można używać do listy skrypty",
+    "hook_name_unknown": "Nazwa akcji '{name}' nieznana",
+    "invalid_credentials": "Nieprawidłowe hasło lub nazwa użytkownika",
+    "invalid_number": "Musi to być liczba",
+    "invalid_regex": "Nieprawidłowe regex: '{regex}'",
+    "invalid_shell": "Nieprawidłowe shell: {shell}",
+    "ldap_attribute_already_exists": "Atrybut LDAP '{attribute}' już istnieje i ma wartość '{value}'",
+    "ldap_server_down": "Nie można nawiązać połączenia z serwerem LDAP",
+    "ldap_server_is_down_restart_it": "Usługa LDAP jest wyłączona. Spróbuj ją ponownie uruchomić…",
+    "log_app_action_run": "Uruchom akcję aplikacji '{}'",
+    "log_app_change_url": "Zmień adres URL aplikacji '{}'",
+    "log_app_config_set": "Zastosuj konfigurację do aplikacji '{}'"
 }
