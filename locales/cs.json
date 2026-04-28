@@ -188,5 +188,6 @@
     "migration_description_0029_postgresql_13_to_15": "Migrovat databáze z PostgreSQL 13 na 15",
     "migration_description_0030_rebuild_python_venv_in_bookworm": "Opravit Python aplikace po migraci Debian 12 Bookworm",
     "ask_admin_username": "Uživatelské jméno administrátora/ky",
-    "ask_dyndns_recovery_password": "DynDNS heslo pro obnovení"
+    "ask_dyndns_recovery_password": "DynDNS heslo pro obnovení",
+    "app_upgrade_app_name": "Nyní aktualizuji {app}…"
 }
