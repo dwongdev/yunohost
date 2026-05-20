@@ -394,6 +394,7 @@ class MyDiagnoser(Diagnoser):  # type: ignore
                     summary=f"diagnosis_package_security_issue_{level}",
                     data={
                         **issue,
+                        "fixed_in_version": fixed_in_version,
                         "more_infos_list": more_infos_list,
                         "current_version": current_version,
                     },
