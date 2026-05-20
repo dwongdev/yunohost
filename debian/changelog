@@ -1,3 +1,10 @@
+yunohost (12.1.40.1) stable; urgency=low
+
+  - diagnosis: fix fetching of the kernel version info, we want the mainline kernel version and not the debian kernel version (f5f28ba4a)
+  - diagnosis: fix confusing 'fixed in version' diagnosis message when it's in fact a dict (f2ec3cf48)
+
+ -- Alexandre Aubin <alex.aubin@mailoo.org>  Wed, 20 May 2026 17:05:00 +0200
+
 yunohost (12.1.40) stable; urgency=low
 
   - settings: be able to personalize DNS resolvers ([#2246](http://github.com/YunoHost/yunohost/pull/2246))
