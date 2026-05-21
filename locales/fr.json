@@ -88,7 +88,7 @@
     "app_upgrade_specific_channel_msg": "Veuillez noter que vous utilisez actuellement `{channel}` comme source pour les mises à jour. Assurez-vous de consulter la discussion en cours [ici]({pr_url}).",
     "app_upgrade_up_to_date": "La mise à jour forcée de l'application (vers la même version) peut parfois être utile pour reconstruire ou restaurer l'application et ses configurations.",
     "app_upgrade_upgradable": "L'application peut être mise à jour de la version {current_version} à la version {new_version}",
-    "app_upgrade_url_required": "Cette application n'existe pas (plus ?) dans le catalogue, vous devez donc vous occuper manuellement des mises à jour. <br/><small>Depuis la ligne de commande, vous pouvez utiliser `yunohost app upgrade <app>` et fournir l'URL du dépôt à l'aide de l'option `-u`.</small>",
+    "app_upgrade_url_required": "Cette application ne figure pas (plus ?) dans le catalogue ; vous devez donc vous charger manuellement de ses mises à jour. <br/><small>Depuis la ligne de commande, vous pouvez utiliser la commande `yunohost app upgrade <app>` et indiquer l'URL du dépôt à l'aide de l'option `-u`.</small>",
     "app_upgraded": "{app} mis à jour",
     "app_yunohost_version_not_supported": "Cette application nécessite une version de YunoHost >= {required}. La version installée est {current}.",
     "apps_already_up_to_date": "Toutes les applications sont déjà à jour",
@@ -750,7 +750,7 @@
     "pattern_password": "Doit être composé d'au moins 3 caractères",
     "pattern_password_app": "Désolé, les mots de passe ne peuvent pas contenir les caractères suivants : {forbidden_chars}",
     "pattern_port_or_range": "Doit être un numéro de port valide compris entre 0 et 65535, ou une gamme de ports (exemple : 100 :200)",
-    "pattern_username": "Doit être composé uniquement de caractères alphanumériques minuscules et de tirets bas (aussi appelé tiret du 8 ou underscore)",
+    "pattern_username": "Ne doit contenir que des caractères alphanumériques en minuscules, des points, des tirets (aussi appelé tiret du 6) et des traits de soulignement (aussi appelé tiret du 8 ou underscore)",
     "permission_already_allowed": "Le groupe '{group}' a déjà l'autorisation '{permission}' activée",
     "permission_already_disallowed": "Le groupe '{group}' a déjà l'autorisation '{permission}' désactivé",
     "permission_cannot_remove_main": "Supprimer une autorisation principale n'est pas autorisé",
@@ -915,5 +915,7 @@
     "yunohost_installing": "L'installation de YunoHost est en cours…",
     "yunohost_not_installed": "YunoHost n'est pas correctement installé. Veuillez exécuter 'yunohost tools postinstall'",
     "yunohost_postinstall_end_tip": "La post-installation est terminée ! Pour finaliser votre installation, il est recommandé de :\n    - diagnostiquer les potentiels problèmes dans la section 'Diagnostic' de l'interface web (ou 'yunohost diagnosis run' en ligne de commande) ;\n    - lire les parties 'Lancer la configuration initiale' et 'Découvrez l'auto-hébergement, comment installer et utiliser YunoHost' dans le guide d'administration : https://doc.yunohost.org/admin.",
-    "migration_0036_apt_lists_file_still_exists": "Le fichier hérité '{file}' existe toujours alors qu'il ne devrait plus être présent. Il sera renommé '{file}.legacy_bookworm'."
+    "migration_0036_apt_lists_file_still_exists": "Le fichier hérité '{file}' existe toujours alors qu'il ne devrait plus être présent. Il sera renommé '{file}.legacy_bookworm'.",
+    "app_db_prompt_no_app_database": "Cette application ne semble pas avoir de base de données déclarée dans son fichier manifest",
+    "app_db_prompt_type_not_supported": "La commande ne prend pas en charge ce type de base de données : {type}"
 }
