@@ -88,7 +88,7 @@
     "app_upgrade_specific_channel_msg": "Зверніть увагу, що ви зараз використовуєте `{channel}` як джерело для оновлень. Обов'язково перегляньте поточне обговорення [тут]({pr_url}).",
     "app_upgrade_up_to_date": "Примусове оновлення додатку (до тієї ж версії) іноді може бути корисним для перебудови додатку та конфігурацій.",
     "app_upgrade_upgradable": "Додаток може бути оновлений з версії {current_version} до {new_version}",
-    "app_upgrade_url_required": "Цього додатка більше немає (чи ні?) у каталозі, тому вам доведеться оновлювати його вручну. <br/><small>З командного рядка ви можете використовувати `yunohost app upgrade <app>` та вказати URL-адресу репозиторію за допомогою опції `-u`.</small>",
+    "app_upgrade_url_required": "Цей додаток відсутній у каталозі (чи його там вже немає?), тому вам доведеться самостійно дбати про його оновлення. <br/><small>У командному рядку можна скористатися командою `yunohost app upgrade <app>` та вказати URL-адресу репозиторію за допомогою опції `-u`.</small>",
     "app_upgraded": "{app} оновлено",
     "app_yunohost_version_not_supported": "Для роботи додатку потрібен YunoHost мінімум версії {required}, але поточна встановлена версія {current}.",
     "apps_already_up_to_date": "Усі застосунки вже оновлено",
@@ -102,8 +102,8 @@
     "ask_admin_fullname": "Повне ім'я адміністратора",
     "ask_admin_username": "Ім'я користувача адміністратора",
     "ask_dyndns_recovery_password": "Пароль відновлення DynDNS",
-    "ask_dyndns_recovery_password_explain": "Будь ласка, виберіть пароль для відновлення вашого домену DynDNS, на випадок, якщо вам знадобиться скинути його пізніше.",
-    "ask_dyndns_recovery_password_explain_during_unsubscribe": "Будь ласка, введіть пароль відновлення для цього домену DynDNS.",
+    "ask_dyndns_recovery_password_explain": "Будь ласка, виберіть пароль для відновлення доступу до вашого домену DynDNS на випадок, якщо вам знадобиться його скинути пізніше.",
+    "ask_dyndns_recovery_password_explain_during_unsubscribe": "Введіть пароль відновлення для цього домену DynDNS.",
     "ask_dyndns_recovery_password_explain_unavailable": "Цей домен DynDNS вже зареєстрований. Якщо ви особисто зареєстрували цей домен, можете ввести пароль для відновлення домену.",
     "ask_fullname": "Повне ім'я",
     "ask_main_domain": "Основний домен",
@@ -750,7 +750,7 @@
     "pattern_password": "Має бути довжиною не менше 3 символів",
     "pattern_password_app": "На жаль, паролі не можуть містити такі символи: {forbidden_chars}",
     "pattern_port_or_range": "Має бути припустимий номер порту (наприклад, 0-65535) або діапазон портів (наприклад, 100:200)",
-    "pattern_username": "Має складатися тільки з букв і цифр в нижньому регістрі і символів підкреслення",
+    "pattern_username": "Допускаються лише малі літери, цифри, крапка, тире та підкреслення",
     "permission_already_allowed": "Група '{group}' вже має увімкнений дозвіл '{permission}'",
     "permission_already_disallowed": "Група '{group}' вже має вимкнений дозвіл '{permission}'",
     "permission_cannot_remove_main": "Вилучення основного дозволу заборонене",
@@ -915,5 +915,7 @@
     "yunohost_installing": "Встановлення YunoHost…",
     "yunohost_not_installed": "YunoHost установлений неправильно. Будь ласка, запустіть 'yunohost tools postinstall'",
     "yunohost_postinstall_end_tip": "Післявстановлення завершено! Щоб завершити доналаштування, будь ласка, розгляньте наступні варіанти:\n - діагностика можливих проблем через розділ 'Діагностика' вебадмініструванні (або 'yunohost diagnosis run' в командному рядку);\n - прочитання розділів 'Завершення встановлення' і 'Знайомство з YunoHost' у документації адміністратора: https://doc.yunohost.org/admin.",
-    "migration_0036_apt_lists_file_still_exists": "Застарілий файл '{file}' все ще існує, хоча не повинен. Його буде перейменовано на '{file}.legacy_bookworm'."
+    "migration_0036_apt_lists_file_still_exists": "Застарілий файл '{file}' все ще існує, хоча не повинен. Його буде перейменовано на '{file}.legacy_bookworm'.",
+    "app_db_prompt_no_app_database": "Схоже, у маніфесті цього додатка не вказано базу даних",
+    "app_db_prompt_type_not_supported": "Команда не підтримує цей тип бази даних: {type}"
 }
